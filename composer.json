@@ -1,0 +1,31 @@
+{
+  "name": "handymaster/system-notification",
+  "description": "handymaster system notification feature",
+  "license": "license",
+  "authors": [
+    {
+      "name": "Jaime Espinueva",
+      "email": "espinuevajaime@icloud.com"
+    }
+  ],
+  "homepage": "https://handymaster.co.uk",
+  "require": {
+    "illuminate/supprt": "~5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~7.0",
+    "mockery/mockery": "^1.1",
+    "orchestra/testbench": "~3.0",
+    "sempro/phpunit-pretty-print": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "handymaster\\SystemNotification\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "handymaster\\SystemNotification\\Test\\": "tests"
+    }
+  }
+}
