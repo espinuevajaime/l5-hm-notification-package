@@ -1,0 +1,80 @@
+$debug: 1;
+// transition
+$transition_enter_duration: 250ms;
+$transition_enter_easing: ease-out;
+
+$transition_leave_duration: 150ms;
+$transition_leave_easing: ease;
+
+.system-notify-container {
+  .notification {
+    &-enter-active {
+      transition: '%s %s' % ( ($transition_enter_duration * $debug) $transition_enter_easing );
+    }
+    &-leave-active {
+      min-width: max-content;
+      transition: '%s %s' % ( ($transition_leave_duration * $debug) $transition_leave_easing );
+    }
+    &-enter-active,
+    &-leave-active {
+      pointer-events: none;
+      backface-visibility: hidden;
+      will-change: transorm, opacity;
+    }
+    &-enter,
+    &-leave-to {
+      opacity: 0;
+    }
+
+  }
+  &[class*="dir-"] {
+    .notification {
+      &-move {
+        transition: '%s %s' % (($transition_leave_duration * $debug) $transition_leave_easing )
+      }
+      &-leave-to {
+        transform: scaleY(0)
+      }
+    }
+  }
+
+  &.dir-bottom {
+    .notification {
+      &-enter {
+        transform: translateY(50%)
+      }
+      &-leave-to {
+        transform: translateY(-50%)
+      }
+      &-leave-active:not(:first-child) {
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+  &.dir-top {
+    .notification {
+      &-enter {
+        transform: translateY(-50%)
+      }
+      &-leave-to {
+        transform: translateY(50%)
+      }
+      &-leave-active {
+        position: absolute;
+        width: 100%
+      }
+    }
+  }
+
+
+}
+
+@keyframes notify-progress {
+  from {
+    transform: scaleX(1)
+  }
+  to {
+    transform: scaleX(0)
+  }
+}
